@@ -25,6 +25,14 @@
 /// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
+//said to be at the top
+
+struct PhysicsCategory {
+  static let none      : UInt32 = 0
+  static let all       : UInt32 = UInt32.max
+  static let monster   : UInt32 = 0b1       // 1
+  static let projectile: UInt32 = 0b10      // 2
+}
 
 import SpriteKit
 
@@ -60,18 +68,14 @@ extension CGPoint {
   }
 }
 
-class GameScene: SKScene {
+class GameScene: SKScene{
   
-  struct PhysicsCategory {
-    static let none      : UInt32 = 0
-    static let all       : UInt32 = UInt32.max
-    static let monster   : UInt32 = 0b1       // 1
-    static let projectile: UInt32 = 0b10      // 2
-  }
+
+  
   
   // 1
   let player = SKSpriteNode(imageNamed: "player")
-  var monstersDestroyed = 0
+  
   
   override func didMove(to view: SKView) {
     // 2
@@ -81,21 +85,21 @@ class GameScene: SKScene {
     // 4
     addChild(player)
     
+    //said after adding player
     physicsWorld.gravity = .zero
     physicsWorld.contactDelegate = self
     
+    
+    //adding this thing
     run(SKAction.repeatForever(
       SKAction.sequence([
         SKAction.run(addMonster),
         SKAction.wait(forDuration: 1.0)
         ])
     ))
-    
-    let backgroundMusic = SKAudioNode(fileNamed: "background-music-aac.caf")
-    backgroundMusic.autoplayLooped = true
-    addChild(backgroundMusic)
-  }
   
+    
+  }
   func random() -> CGFloat {
     return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
   }
@@ -105,9 +109,11 @@ class GameScene: SKScene {
   }
   
   func addMonster() {
+    
     // Create sprite
     let monster = SKSpriteNode(imageNamed: "monster")
     
+    //said something about creating monster sprite
     monster.physicsBody = SKPhysicsBody(rectangleOf: monster.size) // 1
     monster.physicsBody?.isDynamic = true // 2
     monster.physicsBody?.categoryBitMask = PhysicsCategory.monster // 3
@@ -128,30 +134,28 @@ class GameScene: SKScene {
     let actualDuration = random(min: CGFloat(2.0), max: CGFloat(4.0))
     
     // Create the actions
-    let actionMove = SKAction.move(to: CGPoint(x: -monster.size.width/2, y: actualY), duration: TimeInterval(actualDuration))
+    let actionMove = SKAction.move(to: CGPoint(x: -monster.size.width/2, y: actualY),
+                                   duration: TimeInterval(actualDuration))
     let actionMoveDone = SKAction.removeFromParent()
-    let loseAction = SKAction.run() { [weak self] in
-      guard let `self` = self else { return }
-      let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
-      let gameOverScene = GameOverScene(size: self.size, won: false)
-      self.view?.presentScene(gameOverScene, transition: reveal)
-    }
-    monster.run(SKAction.sequence([actionMove, loseAction, actionMoveDone]))
+    monster.run(SKAction.sequence([actionMove, actionMoveDone]))
   }
   
+  
+  
+  //adding this
   override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
     // 1 - Choose one of the touches to work with
     guard let touch = touches.first else {
       return
     }
-    run(SKAction.playSoundFileNamed("pew-pew-lei.caf", waitForCompletion: false))
-    
     let touchLocation = touch.location(in: self)
     
     // 2 - Set up initial location of projectile
     let projectile = SKSpriteNode(imageNamed: "projectile")
     projectile.position = player.position
     
+    
+    //here?
     projectile.physicsBody = SKPhysicsBody(circleOfRadius: projectile.size.width/2)
     projectile.physicsBody?.isDynamic = true
     projectile.physicsBody?.categoryBitMask = PhysicsCategory.projectile
@@ -159,8 +163,11 @@ class GameScene: SKScene {
     projectile.physicsBody?.collisionBitMask = PhysicsCategory.none
     projectile.physicsBody?.usesPreciseCollisionDetection = true
     
+    
     // 3 - Determine offset of location to projectile
     let offset = touchLocation - projectile.position
+    
+
     
     // 4 - Bail out if you are shooting down or backwards
     if offset.x < 0 { return }
@@ -182,21 +189,14 @@ class GameScene: SKScene {
     let actionMoveDone = SKAction.removeFromParent()
     projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
   }
-  
+
   func projectileDidCollideWithMonster(projectile: SKSpriteNode, monster: SKSpriteNode) {
     print("Hit")
     projectile.removeFromParent()
     monster.removeFromParent()
-    
-    monstersDestroyed += 1
-    if monstersDestroyed > 30 {
-      let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
-      let gameOverScene = GameOverScene(size: self.size, won: true)
-      view?.presentScene(gameOverScene, transition: reveal)
-    }
   }
 }
-
+//adding at end
 extension GameScene: SKPhysicsContactDelegate {
   func didBegin(_ contact: SKPhysicsContact) {
     // 1
@@ -219,5 +219,5 @@ extension GameScene: SKPhysicsContactDelegate {
       }
     }
   }
+  
 }
-

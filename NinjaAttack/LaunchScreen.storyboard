@@ -28,12 +28,8 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Andrea Perez" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqc-9r-PRD">
-                                <rect key="frame" x="127" y="320" width="121" height="26"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="121" id="JMn-MA-qS9"/>
-                                    <constraint firstAttribute="height" constant="26" id="VP1-4M-Xaj"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <rect key="frame" x="131" y="110" width="175" height="447"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -42,19 +38,19 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="thr-yb-z25" secondAttribute="trailing" id="0Yk-op-Sbr"/>
                             <constraint firstItem="skm-4Q-SEq" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="0tf-Kh-S2U"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="uqc-9r-PRD" secondAttribute="bottom" constant="321" id="3ay-Qc-5aX"/>
                             <constraint firstItem="skm-4Q-SEq" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="20" id="45c-ps-A1j"/>
                             <constraint firstAttribute="trailing" secondItem="skm-4Q-SEq" secondAttribute="trailing" constant="20" id="Aji-Ek-k2q"/>
                             <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="thr-yb-z25" secondAttribute="bottom" id="FXS-f4-xfH"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="uqc-9r-PRD" secondAttribute="trailing" constant="69" id="OKS-Lz-jdV"/>
                             <constraint firstItem="skm-4Q-SEq" firstAttribute="width" secondItem="skm-4Q-SEq" secondAttribute="height" multiplier="1:1" id="Q4h-h8-kju"/>
-                            <constraint firstItem="uqc-9r-PRD" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="300" id="RnC-lW-4qk"/>
                             <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="skm-4Q-SEq" secondAttribute="bottom" constant="20" id="TPw-KF-H85"/>
                             <constraint firstItem="thr-yb-z25" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="bHm-5w-uXH"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="uqc-9r-PRD" secondAttribute="trailing" constant="127" id="mhU-9z-Cth"/>
+                            <constraint firstItem="uqc-9r-PRD" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="90" id="e8k-qf-r91"/>
+                            <constraint firstItem="uqc-9r-PRD" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="131" id="fzN-R5-n36"/>
                             <constraint firstItem="thr-yb-z25" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="mnU-3N-lrW"/>
-                            <constraint firstItem="uqc-9r-PRD" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="127" id="nGa-q4-CkB"/>
                             <constraint firstItem="skm-4Q-SEq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="20" id="uY3-7w-Cr7"/>
                             <constraint firstItem="skm-4Q-SEq" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="wkC-oo-tPK"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="uqc-9r-PRD" secondAttribute="bottom" constant="110" id="zsh-MI-JYh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                     </view>
